@@ -6,6 +6,7 @@
 🧠 IAM & S3 Discovery  
 📂 AccessDenied Pattern Analysis  
 🧬 MITRE ATT&CK Mapping  
+🛡️ Security Framework Mapping
 ⚔️ API-Based Attacker Simulation  
 
 ---
@@ -42,9 +43,6 @@ Each event contains:
 - AccessDenied responses
 - API activity originating from external system
 
-##🖥️ AWS CLI Activity (Kali)
-
-Attacker performing API enumeration.
 ## ⏱️ Attack Timeline
 
 | Step | Action | Purpose |
