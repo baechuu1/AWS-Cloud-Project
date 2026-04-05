@@ -78,11 +78,11 @@ $ aws iam list-users
   ]
 }
 ```
-<br>
-![IAM Role Enumeration](screenshots/list-user.log.png)
-<br>
+
+![IAM Role Enumeration](screenshots/list-user-log.png)
+
 ## 📄 CloudTrail (Successful API Call)
-<br>
+
 ```json
 {
   "eventName": "ListUsers",
