@@ -54,7 +54,7 @@ Attacker performing API enumeration.
 
 ## ☁️ CloudTrail Event History
 
-### API activity generated from attacker actions.
+### IAM List Users
 ```bash
 (kali㉿kali)-[~]
 $ aws iam list-users
@@ -78,10 +78,10 @@ $ aws iam list-users
   ]
 }
 ```
+## 📄 CloudTrail (Successful API Call)
 
 ![IAM Role Enumeration](screenshots/list-user-log.png)
 
-## 📄 CloudTrail (Successful API Call)
 
 ```json
 {
@@ -98,33 +98,84 @@ $ aws iam list-users
 The attacker used ListUsers to enumerate IAM identities within the AWS account.
 This technique helps identify potential targets for privilege escalation or lateral movement, such as users with elevated permissions.
 
+### IAM List Roles
+```bash
+(kali㉿kali)-[~]
+$ aws iam list-roles
+
+{
+  "Roles": [
+    {
+      "Path": "/aws-service-role/resource-explorer-2.amazonaws.com/",
+      "RoleName": "AWSServiceRoleForResourceExplorer",
+      "RoleId": "AROA********LAB",
+      "Arn": "arn:aws:iam::123456789:role/aws-service-role/resource-explorer-2.amazonaws.com/AWSServiceRoleForResourceExplorer",
+    }
+```
+## 📄 CloudTrail (Successful API Call)
 ![IAM Role Enumeration](screenshots/list-role-log.png)
-<br>
+```json
+{
+  "eventName": "ListRoles",
+  "eventSource": "iam.amazonaws.com",
+  "userName": "cloud-attacker",
+  "sourceIPAddress": "External IP",
+  "awsRegion": "us-east-1",
+  "eventTime": "2026-04-05T21:24:34Z"
+}
+```
+### 🔹 Analysis
+The attacker performed ListRoles to identify IAM roles and their trust relationships. Enumerating roles helps uncover potential privilege escalation paths, especially if roles can be assumed (sts:AssumeRole) or are overly permissive.
+### S3 Bucket Enumeration
+```bash
+(kali㉿kali)-[~]
+$ aws s3 ls
+
+An error occurred (AccessDenied) when calling the ListBuckets operation: User:
+arn:aws:iam::123456789:user/cloud-attacker is not authorized to perform:
+s3:ListAllMyBuckets because no identity-based policy allows the
+s3:ListAllMyBuckets action
+```
+❌ CloudTrail (AccessDenied)
 ![IAM Role Enumeration](screenshots/list-bucket-log.png)
-<br>
+```json
+{
+  "eventName": "ListBuckets",
+  "eventSource": "s3.amazonaws.com",
+  "userName": "cloud-attacker",
+  "sourceIPAddress": "External IP",
+  "awsRegion": "us-east-1",
+  "eventTime": "2026-04-05T20:30:54Z",
+  "errorCode": "AccessDenied"
+  "errorMessage": "User: arn:aws:iam::123456789:user/cloud-attacker is not authorized to perform: s3:ListAllMyBuckets because no identity-based policy allows the s3:ListAllMyBuckets action",
+}
+```
+### 🔹 Analysis
+The attacker attempted to list S3 buckets to discover accessible storage resources that may contain sensitive data. The request failed due to insufficient permissions, indicating proper access controls were in place for this action.
+### Identity Verification
+```bash
+(kali㉿kali)-[~]
+$ aws sts get-caller-identity
+{
+  "UserId": "AIDA********LAB",
+  "Account": "123456789",
+  "Arn": "arn:aws:iam::123456789:user/cloud-attacker"
+}
+```
+## 📄 CloudTrail (Successful API Call)
 ![IAM Role Enumeration](screenshots/caller-identity-log.png)
-<br>
-## 📄 CloudTrail JSON (Successful API Call)
-
-## Example of successful enumeration.
-
-Key Fields
-
-"eventName": "ListBuckets",
-"userIdentity": {...},
-"sourceIPAddress": "X.X.X.X"
-
-## ❌ CloudTrail JSON (AccessDenied)
-
-Example of failed API attempt.
-
-Key Indicator
-
-"errorCode": "AccessDenied"
-## 🧠 Key Insight
-
-AccessDenied events reveal attacker intent and highlight permission boundaries within the environment.
-
+```json
+{
+  "eventName": "GetCallerIdentity",
+  "eventSource": "sts.amazonaws.com",
+  "userName": "cloud-attacker",
+  "sourceIPAddress": "203.0.113.45",
+  "awsRegion": "us-east-1",
+  "eventTime": "2026-04-05T20:25:49Z"
+}
+```
+### 🔹 Analysis
+The attacker used GetCallerIdentity to confirm that the credentials were valid and to determine the AWS account context. This step is commonly performed immediately after gaining access to verify authentication and understand the scope of access.
 ## 🧬 MITRE ATT&CK Mapping
 - Technique	Description
 - Valid Accounts	Use of legitimate IAM credentials
