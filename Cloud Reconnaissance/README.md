@@ -81,7 +81,8 @@ $ aws iam list-users
 <br>
 ![IAM Role Enumeration](screenshots/list-user.log.png)
 <br>
-## 📄 CloudTrail JSON (Successful API Call)
+## 📄CloudTrail JSON (Successful API Call)
+<br>
 ```json
 {
     "eventVersion": "1.11",
