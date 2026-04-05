@@ -79,26 +79,18 @@ $ aws iam list-users
 }
 ```
 <br>
-![IAM Role Enumeration](screenshots/list-user-log.png)
+![IAM Role Enumeration](screenshots/list-user.log.png)
 <br>
 ## 📄CloudTrail JSON (Successful API Call)
 <br>
 ```json
 {
-    "eventVersion": "1.11",
-    "userIdentity": {
-        "type": "IAMUser",
-        "principalId": "AIDA********LAB",
-        "arn": "arn:aws:iam::123456789:user/cloud-attacker",
-        "accountId": "123456789",
-        "accessKeyId": "Secret",
-        "userName": "cloud-attacker"
-    },
-    "eventTime": "2026-04-05T20:25:57Z",
-    "eventSource": "iam.amazonaws.com",
-    "eventName": "ListUsers",
-    "awsRegion": "us-east-1",
-    "sourceIPAddress": "External-IP",
+  "eventName": "ListUsers",
+  "eventSource": "iam.amazonaws.com",
+  "userName": "cloud-attacker",
+  "sourceIPAddress": "External IP",
+  "awsRegion": "us-east-1",
+  "eventTime": "2026-04-05T20:25:57Z"
 }
 ```
 
