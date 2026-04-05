@@ -1,145 +1,74 @@
-<h1 align="center">☁️ AWS Cloud Security Lab</h1>
 
-<p align="center">
-Simulating a real-world cloud breach: credential compromise → reconnaissance → privilege escalation → persistence → data exposure
-</p>
+☁️ AWS Cloud Security Lab
+📊 Project Highlights
 
----
+☁️ AWS CloudTrail Log Analysis
+🔍 API Activity Monitoring
+🧠 Cloud Threat Detection & Investigation
+📂 IAM & S3 Security Analysis
+🧬 MITRE ATT&CK Mapping
+⚔️ Cloud Attack Simulation (Attacker → Defender)
 
-## 📖 Overview
+📌 Overview
 
-This project simulates a **real-world AWS cloud security incident** where an attacker gains access to compromised IAM credentials and performs API-based reconnaissance, privilege escalation, and persistence.
+This project is a hands-on Cloud Security Lab designed to simulate a real-world AWS account compromise and demonstrate detection and investigation using CloudTrail and Splunk.
 
-The lab focuses on **detection, investigation, and security analysis** using AWS CloudTrail and Splunk, while mapping attacker behavior to MITRE ATT&CK and security frameworks.
+Each attack scenario follows a structured workflow:
 
----
-
-## 🎯 Objectives
-
-- Simulate a cloud attack lifecycle using AWS
-- Analyze CloudTrail logs for attacker behavior
-- Identify IAM abuse and misconfigurations
-- Demonstrate detection engineering concepts
-- Map activity to MITRE ATT&CK, NIST, and CIS
-
----
-
-## 🧠 Skills Demonstrated
-
-- AWS IAM & access control
-- CloudTrail log analysis
-- API-based attack simulation (AWS CLI)
-- Detection thinking (SOC / IR mindset)
-- Cloud misconfiguration analysis
-- MITRE ATT&CK mapping
-- NIST & CIS control mapping
-- Splunk log analysis
-
----
-
-## 🏗️ Lab Architecture
-Kali Linux (Attacker)
-↓
-AWS (IAM, S3, CloudTrail)
-↓
-CloudTrail Logs (S3)
-↓
-Splunk (SIEM)
-↓
-Detection & Investigation
-
-
----
-
-## ⚔️ Attack Scenario
-
-> An IAM user's access keys were compromised (simulated phishing exposure).  
-> The attacker used these credentials from an external system to enumerate resources, identify weaknesses, and attempt privilege escalation.
-
----
-
-## 🔄 Attack Lifecycle
-
-| Phase | Description |
-|------|------------|
-| 🟢 Initial Access | Compromised IAM credentials |
-| 🔍 Reconnaissance | API enumeration via AWS CLI |
-| 🔺 Privilege Escalation | Abuse of IAM misconfigurations |
-| 🔁 Persistence | Creation of new access paths |
-| 📂 Impact | S3 exposure / data access |
-
----
-
-## 📂 Project Structure
-
-
+⚔️ Attack Simulation (API-based)
+📥 CloudTrail Log Collection
+🔍 Detection & Analysis (Splunk / CloudTrail)
+🧬 MITRE ATT&CK Mapping
+🛡️ Mitigation & Hardening
+🧪 Lab Environment
+Component	Description
+🐉 Kali Linux	Attacker machine (AWS CLI)
+☁️ AWS	Cloud environment
+📊 Splunk SIEM	Log ingestion & analysis
+📦 S3 Bucket	CloudTrail log storage
+🔐 IAM	Identity & access control
+⚔️ Attack Scenarios
+Attack	Description	Status
+🔑 Credential Compromise	Simulated exposed IAM access keys	✅ Completed
+🔍 Cloud Reconnaissance	API enumeration via AWS CLI	✅ Completed
+🔺 Privilege Escalation	IAM misconfiguration abuse	🔄 In Progress
+🔁 Persistence	Backdoor IAM users / access keys	⏳ Planned
+📂 S3 Exposure	Public bucket misconfiguration	⏳ Planned
+📡 Cloud Activity Detection	Splunk-based detection & correlation	⏳ Planned
+📂 Project Structure
 aws-cloud-security-lab/
-├── README.md
-├── screenshots/
-├── initial-access-recon/
-├── privilege-escalation/
-├── persistence/
-├── s3-exposure/
+│
+├── phases/
+│   ├── initial-access-recon/
+│   ├── privilege-escalation/
+│   ├── persistence/
+│   ├── s3-exposure/
+│
 ├── detections/
-└── mappings/
+│
+├── mappings/
+│
+├── screenshots/
+│
+└── README.md
+🎯 Objective
 
+Build a practical understanding of how cloud attacks are executed and detected, focusing on AWS environments, IAM abuse, and API-based attacker behavior.
 
----
+🧠 Key Concepts Demonstrated
+Category	Skills
+🔍 Detection	CloudTrail Analysis, SIEM Monitoring
+🚨 Investigation	API Activity Analysis, Incident Triage
+🧬 Threat Mapping	MITRE ATT&CK (Valid Accounts, Discovery)
+🕵️ Analysis	IAM Abuse, AccessDenied Patterns
+🛡️ Defense	Least Privilege, Logging & Monitoring
+🚀 Roadmap
+🔑 Credential Compromise Simulation
+🔍 Cloud Reconnaissance (AWS CLI Activity)
+🔺 IAM Privilege Escalation
+🔁 Persistence via IAM Abuse
+📂 S3 Public Exposure Detection
+📡 Splunk Detection Engineering
+⚠️ Disclaimer
 
-## 🧪 Lab Environment
-
-- **Attacker:** Kali Linux  
-- **SIEM:** Splunk (Ubuntu VM)  
-- **Cloud:** AWS Free Tier  
-- **Services:** IAM, S3, CloudTrail  
-
----
-
-## 🧾 Evidence & Artifacts
-
-- CloudTrail event logs (JSON)
-- AWS CLI attack activity
-- IAM configurations
-- AccessDenied events (critical detection signal)
-- Splunk queries and detections
-
----
-
-## 🎯 MITRE ATT&CK Coverage
-
-- Valid Accounts
-- Account Discovery
-- Cloud Service Discovery
-- Account Manipulation
-
----
-
-## 🛡️ Security Framework Alignment
-
-- :contentReference[oaicite:0]{index=0} (NIST)
-- :contentReference[oaicite:1]{index=1} (CIS Controls)
-
----
-
-## 🚀 Status
-
-✅ AWS environment configured  
-✅ CloudTrail logging enabled  
-✅ IAM attacker user created  
-✅ Initial API activity generated  
-
-🔄 Next: Initial Access & Recon documentation → Privilege Escalation
-
----
-
-## 💼 Why This Project Matters
-
-This lab demonstrates **real-world cloud attack simulation and detection**, aligning with responsibilities of:
-
-- SOC Analyst  
-- Incident Responder  
-- Cloud Security Analyst  
-
----
-
-<p align="center">🔥 Built for practical, real-world cloud security skills</p>
+This project is for educational purposes only. All activity is conducted in a controlled lab environment using personal AWS resources.
