@@ -36,7 +36,6 @@ Each attack scenario follows a structured workflow:
 
 | Attack | Description | Status |
 |------|------------|--------|
-| 🔑 Credential Compromise | Simulated exposed IAM access keys | ✅ Completed |
 | 🔍 Cloud Reconnaissance | API enumeration via AWS CLI | ✅ Completed |
 | 🔺 Privilege Escalation | IAM misconfiguration abuse | 🔄 In Progress |
 | 🔁 Persistence | Backdoor IAM users / access keys | ⏳ Planned |
@@ -49,6 +48,7 @@ Each attack scenario follows a structured workflow:
 
 
 aws-cloud-security-lab/
+
 │
 ├── phases/
 │ ├── initial-access-recon/
