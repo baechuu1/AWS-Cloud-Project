@@ -98,15 +98,16 @@ $ aws iam list-users
     "eventName": "ListUsers",
     "awsRegion": "us-east-1",
     "sourceIPAddress": "External-IP",
-```
 }
+```
+
 ### 🔹 Analysis
 The attacker used ListUsers to enumerate IAM identities within the AWS account.
 This technique helps identify potential targets for privilege escalation or lateral movement, such as users with elevated permissions.
 
 ![IAM Role Enumeration](screenshots/list-role-log.png)
 <br>
-![IAM Role Enumeration](screenshots/list-buckets-log.png)
+![IAM Role Enumeration](screenshots/list-bucket-log.png)
 <br>
 ![IAM Role Enumeration](screenshots/caller-identity-log.png)
 <br>
