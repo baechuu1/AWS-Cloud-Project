@@ -190,7 +190,7 @@ The attacker attempted to list S3 buckets to discover accessible storage resourc
 | AC-6 (Least Privilege) | AccessDenied confirms restricted permissions |
 | AU-6 (Audit Review) | CloudTrail enables detection of API activity |
 ### 🔹 CIS AWS Foundations Benchmark
-| Control | Observation |
+| Control | Relevance |
 |--------|-------------|
 | 1.5 (MFA) | Not enforced → potential risk |
 | 3.x (Logging) | CloudTrail enabled for API monitoring |
