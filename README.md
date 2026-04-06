@@ -49,11 +49,11 @@ Each attack scenario follows a structured workflow:
 ```
 aws-cloud-security-lab/
 │
-├── phases/
-│ ├── initial-access-recon/
-│ ├── privilege-escalation/
-│ ├── persistence/
-│ ├── s3-exposure/
+|
+├── initial-access-recon/
+├── privilege-escalation/
+├── persistence/
+├── s3-exposure/
 │
 |
 └── README.md
